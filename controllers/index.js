@@ -53,7 +53,7 @@ const getAllItems = (req, res, next) => {
       return next(new AppError("No todo id found", 404));
     }
     conn.query(
-      "DELETE FROM items WHERE id=?", // placeholder query
+      "DELETE FROM items WHERE id=?", // placeholder query`,
       [req.params.id],
       function (err, fields) {
         if (err) return next(new AppError(err, 500));
