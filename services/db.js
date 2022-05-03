@@ -13,6 +13,11 @@ connection.connect(function(err) {
   }
 
   console.log('Connected to the MySQL server.');
+
+  connection.query("CREATE DATABASE IF NOT EXISTS shoppingDb", function (err, result) {
+    if (err) throw err;
+    console.log("Database created");
+  });
 });
 
 module.exports = connection;
