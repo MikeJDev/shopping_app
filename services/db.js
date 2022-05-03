@@ -4,34 +4,35 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'password',
-  database: 'shoppingCart'
+  database: 'shoppingDb'
 });
 
 connection.connect(function(err) {
   if (err) {
     return console.error('error: ' + err.message);
   }
-
-  console.log('Connected to the MySQL server.');
+  console.log('Connected to the DB.');
 
   connection.query("CREATE DATABASE IF NOT EXISTS shoppingDb", function (err, result) {
     if (err) throw err;
     console.log("Database created");
-    var sql = `CREATE TABLE IF NOT EXISTS items (
-      name VARCHAR(50) not null,
-      description VARCHAR(255),
-      quantity INTEGER not null,
-      isPurchase BOOLEAN
-      )`;
-    connection.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("Items table created");
-    });
-    connection.end(function(err) {
-      if (err) {
-        return console.log(err.message);
-      }
-    });
+  });
+
+  var sql = `CREATE TABLE IF NOT EXISTS items (
+    name VARCHAR(50) not null,
+    description VARCHAR(255),
+    quantity INTEGER not null,
+    isPurchase BOOLEAN
+    )`;
+  connection.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("Items table created");
+  });
+
+  connection.end(function(err) {
+    if (err) {
+      return console.log(err.message);
+    }
   });
 });
 
