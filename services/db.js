@@ -22,18 +22,18 @@ connection.connect(function(err) {
     name VARCHAR(50) not null,
     description VARCHAR(255),
     quantity INTEGER not null,
-    isPurchase BOOLEAN
+    isPurchased BOOLEAN
     )`;
   connection.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Items table created");
   });
 
-  connection.end(function(err) {
-    if (err) {
-      return console.log(err.message);
-    }
-  });
+  // connection.end(function(err) {
+  //   if (err) {
+  //     return console.log(err.message);
+  //   }
+  // });
 });
 
 module.exports = connection;
