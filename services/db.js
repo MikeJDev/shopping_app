@@ -17,6 +17,21 @@ connection.connect(function(err) {
   connection.query("CREATE DATABASE IF NOT EXISTS shoppingDb", function (err, result) {
     if (err) throw err;
     console.log("Database created");
+    var sql = `CREATE TABLE IF NOT EXISTS items (
+      name VARCHAR(50) not null,
+      description VARCHAR(255),
+      quantity INTEGER not null,
+      isPurchase BOOLEAN
+      )`;
+    connection.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Items table created");
+    });
+    connection.end(function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+    });
   });
 });
 
