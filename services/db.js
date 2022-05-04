@@ -19,11 +19,11 @@ connection.connect(function(err) {
   });
 
   var sql = `CREATE TABLE IF NOT EXISTS items (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) not null,
     description VARCHAR(255),
     quantity INTEGER not null,
-    isPurchased BOOLEAN
+    isPurchased BOOLEAN DEFAULT false
     )`;
   connection.query(sql, function (err, result) {
     if (err) throw err;
