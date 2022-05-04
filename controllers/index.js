@@ -14,10 +14,9 @@ const getAllItems = (req, res, next) => {
 
   const createItem = (req, res, next) => {
     if (!req.body) return next(new AppError("No info sent in body", 404));
-    const values = [req.body.name, "pending"];
     conn.query(
-      "INSERT INTO items (name, status, description, isPurchased) VALUES(?)",
-      [values], // placeholder query
+      "INSERT INTO items (name, description, quantity, isPurchased) VALUES(?, ?, ?, ?)",
+      [req.body.name, req.body.description, req.body.quantity, req.body.isPurchased],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
         res.status(200).json({
@@ -26,7 +25,7 @@ const getAllItems = (req, res, next) => {
           data: data,
         });
       }
-    );
+      );
   };
 
   const updateItem = (req, res, next) => {
@@ -34,8 +33,8 @@ const getAllItems = (req, res, next) => {
       return next(new AppError("No todo id found", 404));
     }
     conn.query(
-      "UPDATE items SET status='completed' WHERE id=?", // placeholder query
-      [req.params.id],
+      "UPDATE items SET name=?, description=?, quantity=?, isPurchased=? WHERE id=?",
+      [req.body.name, req.body.description, req.body.quantity, req.body.isPurchased, req.params.id],
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
         res.status(200).json({
@@ -52,7 +51,7 @@ const getAllItems = (req, res, next) => {
       return next(new AppError("No todo id found", 404));
     }
     conn.query(
-      "DELETE FROM items WHERE id=?", // placeholder query
+      "DELETE FROM items WHERE id=?", // placeholder query`,
       [req.params.id],
       function (err, fields) {
         if (err) return next(new AppError(err, 500));
