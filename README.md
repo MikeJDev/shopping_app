@@ -24,11 +24,13 @@ Once Mysql is installed, set up your password and username then run the followin
 ## Available Scripts
 
 Steps to run the application:
+## step 1: Open a terminal
+### `mysql.server start`
 
-## step 1:
+## step 2: Open a new terminal
 ### `npm ci`
-Installs dependencies.
-## step 2:
+Installs dependencies. Only run this if first time installing the application.
+## step 3:
 ### `npm run start`
 
 Runs the app in the development mode and also creates the database called shoppingDb.\
