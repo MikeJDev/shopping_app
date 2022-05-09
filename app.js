@@ -3,9 +3,11 @@ const cors = require("cors");
 const router = require("./routes");
 const AppError = require("./utils/appError");
 const errorHandler = require("./utils/errorHandler");
+const { urlencoded } = require("express");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(router);
 
 app.all("*", (req, res, next) => {
@@ -19,5 +21,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
-//mysql.serv start

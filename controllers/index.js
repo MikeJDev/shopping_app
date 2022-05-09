@@ -5,7 +5,7 @@ const getAllItems = (req, res, next) => {
   conn.query("SELECT * FROM items", function (err, data, fields) { // needs fix
     if(err) return next(new AppError(err))
     res.status(200).json({
-      status: "success",
+      status: 200,
       length: data?.length,
       data: data,
     });
@@ -20,7 +20,7 @@ const getAllItems = (req, res, next) => {
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
         res.status(200).json({
-          status: "success",
+          status: 200,
           message: "item created!",
           data: data,
         });
@@ -38,7 +38,7 @@ const getAllItems = (req, res, next) => {
       function (err, data, fields) {
         if (err) return next(new AppError(err, 500));
         res.status(200).json({
-          status: "success",
+          status: 200,
           message: "item updated!",
           data: data,
         });
@@ -51,12 +51,12 @@ const getAllItems = (req, res, next) => {
       return next(new AppError("No todo id found", 404));
     }
     conn.query(
-      "DELETE FROM items WHERE id=?", // placeholder query`,
+      "DELETE FROM items WHERE id=?",
       [req.params.id],
       function (err, fields) {
         if (err) return next(new AppError(err, 500));
         res.status(200).json({
-          status: "success",
+          status: 200,
           message: "item deleted!",
         });
       }
