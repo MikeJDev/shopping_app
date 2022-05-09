@@ -1,4 +1,6 @@
 # Shopping App API
+
+###  `git clone https://github.com/MikeJDev/shopping_app.git`
 ## What is it?
 This is a shopping app API. It is a RESTful API that allows you to create, read, update, and delete shopping lists. This api connects to the frontend application using a React frontend. 
 
