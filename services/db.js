@@ -29,12 +29,6 @@ connection.connect(function(err) {
     if (err) throw err;
     console.log("Items table created");
   });
-
-  // connection.end(function(err) {
-  //   if (err) {
-  //     return console.log(err.message);
-  //   }
-  // });
 });
 
 module.exports = connection;
