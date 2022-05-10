@@ -2,7 +2,7 @@ const AppError = require("../utils/appError");
 const conn = require("../services/db");
 
 const getAllItems = (req, res, next) => {
-  conn.query("SELECT * FROM items", function (err, data, fields) { // needs fix
+  conn.query("SELECT * FROM items WHERE isPurchased = 0", function (err, data, fields) { // needs fix
     if(err) return next(new AppError(err))
     res.status(200).json({
       status: 200,
